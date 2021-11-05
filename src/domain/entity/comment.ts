@@ -24,11 +24,13 @@ export default class Comment {
   readonly id: UUID;
   readonly userId: IUser.Id;
   readonly feedbackId: IFeedback.Id;
+  message: string;
 
-  constructor({ id, feedbackId, userId }: CommentConctructorDTO) {
+  constructor({ id, feedbackId, userId, message }: CommentConctructorDTO) {
     this.id = id;
     this.feedbackId = feedbackId;
     this.userId = userId;
+    this.message = message;
   }
 
   static create({ feedbackId, message, userId }: IComment.Params) {

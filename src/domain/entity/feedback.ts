@@ -7,7 +7,7 @@ import { IUser } from "./user";
 type FeedbackContructorDTO = {
   userId: IUser.Id;
   message: string;
-  feedbackHas: Music | Album;
+  readonly feedbackHas: Music | Album;
   id: UUID;
 };
 
@@ -25,7 +25,6 @@ export default class Feedback {
   readonly userId: IUser.Id;
   message: string;
   feedbackHas: Music | Album;
-  upvotes: Upvote[];
 
   private constructor({
     userId,
@@ -37,7 +36,6 @@ export default class Feedback {
     this.message = message;
     this.feedbackHas = feedbackHas;
     this.id = id;
-    this.upvotes = [];
   }
 
   static create({

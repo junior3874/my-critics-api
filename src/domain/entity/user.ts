@@ -18,20 +18,20 @@ export default class User {
   password: string;
   name: string;
   username: string;
-  userProfileUrl: string;
+  userImageProfileUrl: string;
 
   private constructor({
     name,
     email,
     password,
     username,
-    userProfileUrl,
+    userImageProfileUrl,
   }: User) {
     this.email = email;
     this.name = name;
     this.password = password;
     this.username = username;
-    this.userProfileUrl = userProfileUrl;
+    this.userImageProfileUrl = userImageProfileUrl;
   }
 
   static create({
@@ -50,7 +50,7 @@ export default class User {
       name,
       password,
       username,
-      userProfileUrl: "",
+      userImageProfileUrl: "",
     });
   }
 }
