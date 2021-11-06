@@ -1,6 +1,6 @@
 import { InvalidEmailError } from "./errors/InvalidEmailError";
 import Hash from "./types/Hash";
-import Email from "./value-objects/Email";
+import Email, { IEmail } from "./value-objects/Email";
 
 export namespace IUser {
   export type Params = {
@@ -10,11 +10,11 @@ export namespace IUser {
     username: string;
   };
 
-  export type Id = Email;
+  export type Id = IEmail.Value;
 }
 
 export default class User {
-  readonly email: Email;
+  readonly email: IEmail.Value;
   password: string;
   name: string;
   username: string;

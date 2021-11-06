@@ -1,8 +1,11 @@
 import { InvalidEmailError } from "../errors/InvalidEmailError";
-import { UniqueString } from "../types/UniqueString";
+
+export namespace IEmail {
+  export type Value = string;
+}
 
 export default class Email {
-  private readonly email: UniqueString;
+  private readonly email: IEmail.Value;
 
   private constructor(email: string) {
     this.email = email;
@@ -16,8 +19,8 @@ export default class Email {
     return new Email(email);
   }
 
-  get value(): Email {
-    return this.email as unknown as Email;
+  get value(): IEmail.Value {
+    return this.email;
   }
 
   static validate(email: string): boolean {

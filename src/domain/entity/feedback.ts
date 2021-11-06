@@ -1,15 +1,8 @@
 import Music from "./value-objects/Music";
 import Album from "./value-objects/Album";
-import UUID from "./value-objects/UUID";
+import UUID, { IUUID } from "./value-objects/UUID";
 import Upvote from "./upvote";
 import { IUser } from "./user";
-
-type FeedbackContructorDTO = {
-  userId: IUser.Id;
-  message: string;
-  readonly feedbackHas: Music | Album;
-  id: UUID;
-};
 
 export namespace IFeedback {
   export type Id = UUID;
@@ -21,29 +14,20 @@ export namespace IFeedback {
 }
 
 export default class Feedback {
-  readonly id: UUID;
+  readonly id: IUUID.Value;
   readonly userId: IUser.Id;
   message: string;
   feedbackHas: Music | Album;
 
-  private constructor({
-    userId,
-    message,
-    feedbackHas,
-    id,
-  }: FeedbackContructorDTO) {
+  private constructor({ userId, message, feedbackHas, id }: Feedback) {
     this.userId = userId;
     this.message = message;
     this.feedbackHas = feedbackHas;
     this.id = id;
   }
 
-  static create({
-    message,
-    feedbackHas,
-    userId,
-  }: IFeedback.Params): IFeedback.Params {
+  static create({ message, feedbackHas, userId }: IFeedback.Params): Feedback {
     const id = UUID.create();
-    return new Feedback({ id, feedbackHas, message, userId });
+    return new Feedback({ id: id.value, feedbackHas, message, userId });
   }
 }

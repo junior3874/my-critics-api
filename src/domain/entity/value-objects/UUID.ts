@@ -1,5 +1,9 @@
+export namespace IUUID {
+  export type Value = string;
+}
+
 export default class UUID {
-  readonly value: string;
+  readonly value: IUUID.Value;
   constructor(value: string) {
     this.value = value;
   }
