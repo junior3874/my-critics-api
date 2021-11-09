@@ -1,6 +1,5 @@
 import { UserSignInController } from "@/presentation/controllers/user";
-import { IUserSignUpValidator } from "./interfaces/IUserSignUpValidator";
-import { IValidation } from "./interfaces/IValidation";
+import { IValidation } from "../presentation/interfaces/IValidation";
 import * as yup from "yup";
 import { MissingParamError } from "@/presentation/errors";
 import { InvalidEmailError } from "@/domain/entity/errors/InvalidEmailError";
@@ -11,7 +10,7 @@ const errors = {
 };
 const types = ["email", "required"];
 
-export class YupAdapter implements IUserSignUpValidator {
+export class YupAdapter {
   async validateSignUp(
     fields: UserSignInController.Request
   ): Promise<IValidation.Result> {
@@ -20,9 +19,18 @@ export class YupAdapter implements IUserSignUpValidator {
       password: yup.string().required().min(8).max(16),
     });
 
-    const res = [];
+    const err = await errAdapter(fields, schema);
+    return err as IValidation.Result;
+  }
+}
 
-    await schema.validate(fields, { abortEarly: false }).catch((err) => {
+async function errAdapter(fields, schema): Promise<IValidation.Result> {
+  const res: IValidation.Error[] = [];
+
+  await schema
+    .validate(fields, { abortEarly: false })
+    .then((_) => true)
+    .catch((err) => {
       err.inner.map((err) => {
         if (!types.includes(err.type)) return;
         const objectError: IValidation.Result = {
@@ -37,6 +45,7 @@ export class YupAdapter implements IUserSignUpValidator {
       });
     });
 
-    return res;
-  }
+  if (res.length === 0) return true;
+
+  return res.length === 1 ? res[0] : res;
 }
