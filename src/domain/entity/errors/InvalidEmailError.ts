@@ -1,6 +1,6 @@
 export class InvalidEmailError extends Error implements DomainError {
-  constructor(email: string) {
-    super(`The email "${email}" is invalid.`);
+  constructor() {
+    super(`The email is invalid.`);
     this.name = "InvalidEmailError";
   }
 }

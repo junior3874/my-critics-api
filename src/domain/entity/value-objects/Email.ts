@@ -14,7 +14,7 @@ export default class Email {
 
   static create(email: string): Email | InvalidEmailError {
     if (!Email.validate(email)) {
-      return new InvalidEmailError(email);
+      return new InvalidEmailError();
     }
     return new Email(email);
   }
