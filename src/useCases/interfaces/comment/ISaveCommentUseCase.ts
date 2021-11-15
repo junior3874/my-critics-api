@@ -1,7 +1,9 @@
+import { InvalidMessageError } from "@/domain/entity/errors/InvalidMessage";
+
 export interface ISaveCommentUseCase {
   save: (
     data: ISaveCommentUseCase.Params
-  ) => Promise<ISaveCommentUseCase.Params>;
+  ) => Promise<ISaveCommentUseCase.Result | InvalidMessageError>;
 }
 
 export namespace ISaveCommentUseCase {
@@ -9,6 +11,7 @@ export namespace ISaveCommentUseCase {
     userId: string;
     message: string;
     feedbackId: string;
+    repliesByComment?: string;
   };
 
   export type Result = {
