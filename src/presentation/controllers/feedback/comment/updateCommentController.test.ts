@@ -21,7 +21,7 @@ describe("#updateCommentController", () => {
       message: "adoajdoajo",
     };
 
-    updateCommentUseCase.save.mockResolvedValue({ message: "adoajdoajo" });
+    updateCommentUseCase.update.mockResolvedValue({ message: "adoajdoajo" });
     const res = await sut.handler(mockUpdatedComment);
 
     const expectedRes: HttpResponse = {

@@ -8,7 +8,7 @@ export class UpdateCommentController implements Controller {
     request: UpdateCommentController.Request
   ): Promise<HttpResponse> {
     try {
-      const updatedComment = await this.updateCommentUseCase.save(request);
+      const updatedComment = await this.updateCommentUseCase.update(request);
 
       return {
         body: updatedComment,
