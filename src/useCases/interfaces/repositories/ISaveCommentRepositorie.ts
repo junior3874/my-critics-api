@@ -2,7 +2,7 @@ import { string } from "yup/lib/locale";
 import { ISaveFeedbackRepositorie } from ".";
 
 export interface ISaveCommentRepositorie {
-  save(params: ISaveFeedbackRepositorie.Params): Promise<void>;
+  save(params: ISaveCommentRepositorie.Params): Promise<void>;
 }
 
 export namespace ISaveCommentRepositorie {
