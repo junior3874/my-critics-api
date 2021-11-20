@@ -1,14 +1,14 @@
 import Music from "./value-objects/Music";
 import Album from "./value-objects/Album";
-import UUID, { IUUID } from "./value-objects/UUID";
+import { UUID } from "./value-objects/UUID";
 import Upvote from "./upvote";
 import { IUser } from "./user";
-import Comment from "./comment";
+import { Comment } from "./comment";
 import { Message } from "./value-objects/Message";
 import { InvalidMessageError } from "./errors/InvalidMessage";
 
 export namespace IFeedback {
-  export type Id = IUUID.Value;
+  export type Id = UUID.Value;
   export type Params = {
     userId: IUser.Id;
     message: string;
@@ -24,7 +24,7 @@ export namespace IFeedback {
 // };
 
 export default class Feedback {
-  readonly id: IUUID.Value;
+  readonly id: UUID.Value;
   readonly userId: IUser.Id;
   message: Message.Value;
   feedbackHas: Music | Album;

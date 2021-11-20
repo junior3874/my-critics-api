@@ -1,7 +1,7 @@
 import { CommentId } from "./comment";
 import { IFeedback } from "./feedback";
 import { IUser } from "./user";
-import UUID from "./value-objects/UUID";
+import { UUID } from "./value-objects/UUID";
 
 export namespace IUpvote {
   export type Params = {
@@ -12,7 +12,7 @@ export namespace IUpvote {
 }
 export interface IUpvote {}
 export default class Upvote {
-  readonly id: UUID;
+  readonly id: UUID.Value;
   type: boolean;
   upvoteBelongsToEntityId: CommentId | IFeedback.Id;
   userId: IUser.Id;
@@ -26,6 +26,6 @@ export default class Upvote {
 
   static create({ type, upvoteBelongsToEntityId, userId }: IUpvote.Params) {
     const id = UUID.create();
-    return new Upvote({ id, type, upvoteBelongsToEntityId, userId });
+    return new Upvote({ id: id.value, type, upvoteBelongsToEntityId, userId });
   }
 }
