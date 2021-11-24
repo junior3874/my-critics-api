@@ -1,0 +1,40 @@
+datasource db {
+    url      = env("DATABASE_URL")
+    provider = "postgresql"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model User {
+    id              String   @id
+    email           String
+    username        String
+    imageProfileUrl String
+    password        String
+    Upvotes         Upvote[]
+}
+
+model Feedback {
+    id      Int      @id @default(autoincrement())
+    Upvotes Upvote[]
+}
+
+model Comment {
+    id Int @id @default(autoincrement())
+
+    Upvotes Upvote[]
+}
+
+model Upvote {
+    id         Int     @id @default(autoincrement())
+    type       Boolean
+    userId     String
+    commentId  Int?
+    feedbackId Int?
+
+    userOwner             User      @relation(fields: [userId], references: [id])
+    upvoteBelongsComment  Comment?  @relation(fields: [commentId], references: [id])
+    upvoteBelongsFeedback Feedback? @relation(fields: [feedbackId], references: [id])
+}
