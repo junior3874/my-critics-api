@@ -8,11 +8,12 @@ generator client {
 }
 
 model User {
-    id              String   @id
+    id              Int      @id @default(autoincrement())
     email           String
     username        String
     imageProfileUrl String
     password        String
+    name            String
     Upvotes         Upvote[]
 }
 
@@ -30,7 +31,7 @@ model Comment {
 model Upvote {
     id         Int     @id @default(autoincrement())
     type       Boolean
-    userId     String
+    userId     Int
     commentId  Int?
     feedbackId Int?
 
