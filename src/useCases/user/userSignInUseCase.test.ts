@@ -55,7 +55,7 @@ describe("#userSignInUseCase", () => {
     };
 
     loadUserByEmailRepository.load.mockResolvedValue({
-      id: "1",
+      id: 1,
       password: mockUser.password,
     });
 
@@ -99,7 +99,7 @@ describe("#userSignInUseCase", () => {
     const { sut, loadUserByEmailRepository, hashComparer } = makeSut();
 
     loadUserByEmailRepository.load.mockResolvedValue({
-      id: "1",
+      id: 1,
       password: "testing",
     });
 

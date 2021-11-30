@@ -23,9 +23,9 @@ export default class UserSignInUseCase implements IUserSignInUseCase {
     );
 
     if (!valid) throw new UserNotFound();
-    const accessToken = await this.encrypter.encrypt(user.id);
+    const accessToken = await this.encrypter.encrypt(user.id.toString());
     const getUserData = await this.loadUserEssentialsDataRepository.load(
-      user.id
+      user.id.toString()
     );
     return {
       ...getUserData,
