@@ -6,9 +6,9 @@ export interface ILoadUserByEmailRepositorie {
   ) => Promise<ILoadUserByEmailRepositorie.Result | undefined>;
 }
 
-namespace ILoadUserByEmailRepositorie {
+export namespace ILoadUserByEmailRepositorie {
   export type Result = {
-    id: string;
-    password: Hash;
+    id: number;
+    password: string;
   };
 }
