@@ -12,11 +12,12 @@ export default class FeedbackCreateUseCase implements ISaveFeedbackUseCase {
   async save({
     message,
     userId,
-    musicOrAlbumUrl,
+    musicOrAlbumId,
+    type,
   }: ISaveFeedbackUseCase.Params): Promise<void> {
     const createFeedback = this.feedback.create({
       userId,
-      feedbackHas: musicOrAlbumUrl as unknown as Music | Album,
+      feedbackHas: musicOrAlbumId as unknown as Music | Album,
       message: message,
     });
 
@@ -24,7 +25,8 @@ export default class FeedbackCreateUseCase implements ISaveFeedbackUseCase {
       id: createFeedback.id,
       message,
       userId,
-      musicOrAlbumUrl,
+      musicOrAlbumId,
+      type,
     });
   }
 }

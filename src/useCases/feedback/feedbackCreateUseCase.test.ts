@@ -1,5 +1,4 @@
 import Feedback from "@/domain/entity/feedback";
-
 import { ISaveFeedbackRepositorie } from "@/useCases/interfaces/repositories/ISaveFeedbackRepositorie";
 import { mock } from "jest-mock-extended";
 import FeedbackCreateUseCase from "./feedbackCreateUseCase";
@@ -17,7 +16,8 @@ describe("feedbackCreateUseCase", () => {
     const mockFeedback: ISaveFeedbackRepositorie.Params = {
       message: "testing",
       userId: "1",
-      musicOrAlbumUrl: "testingUrl",
+      musicOrAlbumId: "testingUrl",
+      type: "track",
       id: "1",
     };
 
@@ -33,7 +33,7 @@ describe("feedbackCreateUseCase", () => {
     expect(Feedback.create).toHaveBeenCalledWith({
       userId: mockFeedback.userId,
       message: mockFeedback.message,
-      feedbackHas: mockFeedback.musicOrAlbumUrl,
+      feedbackHas: mockFeedback.musicOrAlbumId,
     });
     expect(saveFeedbackRepository.save).toHaveBeenCalledWith(mockFeedback);
   });

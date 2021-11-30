@@ -14,8 +14,9 @@ describe("#saveFeedbackController", () => {
     const { sut, saveFeedbackUseCase } = makeSut();
     const mockFeedback: SaveFeedbackController.Request = {
       message: "testing messgae",
-      musicOrAlbumUrl: "testingurl.com",
+      musicOrAlbumId: "testingurl.com",
       userId: "1",
+      type: "album",
     };
 
     const res = await sut.handler(mockFeedback);

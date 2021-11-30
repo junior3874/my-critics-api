@@ -19,6 +19,7 @@ export namespace SaveFeedbackController {
   export type Request = {
     userId: string;
     message: string;
-    musicOrAlbumUrl: string;
+    musicOrAlbumId: string;
+    type: "album" | "track";
   };
 }
