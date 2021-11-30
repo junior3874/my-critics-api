@@ -1,9 +1,9 @@
 import { ISaveUserImageUrlRepositorie } from "@/useCases/interfaces/repositories/ISaveUserImageUrlRepositorie";
 import { ISaveUserProfileImageService } from "@/useCases/interfaces/services/ISaveUserProfileImageService";
 import { mock } from "jest-mock-extended";
+
 import UserSetImageProfile from "./userSetImageProfile";
 
-import fs from "fs";
 import IInspectImage from "@/useCases/interfaces/fileHelper/IInspectImage";
 import { OcurredUnknownErrorInService } from "../interfaces/user/errors/OcurredUnknowErrorInService";
 import { UserImageInvalid } from "../interfaces/user/errors/UserImageInvalid";
