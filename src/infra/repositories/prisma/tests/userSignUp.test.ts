@@ -1,6 +1,11 @@
+import { prisma } from ".prisma/client";
 import PrismaAdapter from "../prisma-adapter";
+import resetDB from "./resetDb";
 
 describe("#userSignUpRepositorie", () => {
+  afterEach(async () => {
+    await resetDB();
+  });
   test("should user sign up with sucess", async () => {
     const { loadUserByEmail, signUp } = PrismaAdapter();
     await signUp.signUp({

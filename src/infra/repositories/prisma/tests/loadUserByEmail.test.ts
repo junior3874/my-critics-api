@@ -1,10 +1,15 @@
 import PrismaAdapter from "../prisma-adapter";
 
 import { PrismaClient } from "@prisma/client";
+import resetDB from "./resetDb";
 
 const prisma = new PrismaClient();
 
 describe("#loadUserByEmailRepositorie", () => {
+  afterEach(async () => {
+    await resetDB();
+  });
+
   test("should load user with sucess", async () => {
     const { loadUserByEmail } = PrismaAdapter();
 
