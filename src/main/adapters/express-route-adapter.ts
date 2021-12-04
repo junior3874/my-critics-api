@@ -2,7 +2,7 @@ import { Controller } from "@/presentation/interfaces/Controller";
 
 import { Request, Response } from "express";
 
-export const adaptRoute = (controller: Controller) => {
+export const adapterRoute = (controller: Controller) => {
   return async (req: Request, res: Response) => {
     const request = {
       ...(req.body || {}),
@@ -10,12 +10,12 @@ export const adaptRoute = (controller: Controller) => {
       accountId: req.accountId,
     };
 
-    const httpResponse = await controller.handler(request);
-    if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299) {
+    try {
+      const httpResponse = await controller.handler(request);
       res.status(httpResponse.statusCode).json(httpResponse.body);
-    } else {
-      res.status(httpResponse.statusCode).json({
-        error: httpResponse.body.message,
+    } catch (err) {
+      res.status(500).json({
+        error: "internal server error",
       });
     }
   };
