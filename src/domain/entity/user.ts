@@ -1,8 +1,8 @@
 import { InvalidEmailError } from "./errors/InvalidEmailError";
 import Hash from "./types/Hash";
-import Email, { IEmail } from "./value-objects/Email";
+import { Email } from "./value-objects/Email";
 
-export namespace IUser {
+export namespace User {
   export type Params = {
     email: string;
     password: string;
@@ -10,11 +10,11 @@ export namespace IUser {
     username: string;
   };
 
-  export type Id = IEmail.Value;
+  export type Id = Email.Value;
 }
 
-export default class User {
-  readonly email: IEmail.Value;
+export class User {
+  readonly email: Email.Value;
   password: string;
   name: string;
   username: string;
@@ -39,7 +39,7 @@ export default class User {
     name,
     password,
     username,
-  }: IUser.Params): User | InvalidEmailError {
+  }: User.Params): User | InvalidEmailError {
     const emailOrError = Email.create(email);
     if (!(emailOrError instanceof Email)) {
       throw emailOrError;

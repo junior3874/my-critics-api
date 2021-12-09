@@ -1,14 +1,14 @@
 import { InvalidMessageError } from "./errors/InvalidMessage";
 import { NewMessageSameOldMessage } from "./errors/NewMessageSameOldMessage";
-import Feedback, { IFeedback } from "./feedback";
-import User, { IUser } from "./user";
+import { Feedback } from "./feedback";
+import { User } from "./user";
 import { Message } from "./value-objects/Message";
 import { UUID } from "./value-objects/UUID";
 
 export namespace Comment {
   export type Params = {
-    userId: IUser.Id;
-    feedbackId: IFeedback.Id;
+    userId: User.Id;
+    feedbackId: Feedback.Id;
     message: string;
   };
 
@@ -16,17 +16,16 @@ export namespace Comment {
 
   export type Constructor = {
     id: UUID.Value;
-    userId: IUser.Id;
-    feedbackId: IFeedback.Id;
+    userId: User.Id;
+    feedbackId: Feedback.Id;
     message: Message.Value;
   };
 }
 
-export type CommentId = string;
 export class Comment {
   readonly id: UUID.Value;
-  readonly userId: IUser.Id;
-  readonly feedbackId: IFeedback.Id;
+  readonly userId: User.Id;
+  readonly feedbackId: Feedback.Id;
   public message: Message.Value;
 
   constructor({ id, feedbackId, userId, message }: Comment.Constructor) {

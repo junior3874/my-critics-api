@@ -1,11 +1,11 @@
 import { InvalidEmailError } from "../errors/InvalidEmailError";
 
-export namespace IEmail {
+export namespace Email {
   export type Value = string;
 }
 
-export default class Email {
-  private readonly email: IEmail.Value;
+export class Email {
+  private readonly email: Email.Value;
 
   private constructor(email: string) {
     this.email = email;
@@ -19,7 +19,7 @@ export default class Email {
     return new Email(email);
   }
 
-  get value(): IEmail.Value {
+  get value(): Email.Value {
     return this.email;
   }
 

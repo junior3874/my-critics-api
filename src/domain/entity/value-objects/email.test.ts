@@ -1,5 +1,5 @@
 import { InvalidEmailError } from "../errors/InvalidEmailError";
-import Email from "./Email";
+import { Email } from "./Email";
 
 describe("email value object", () => {
   test("should create email with sucess", () => {

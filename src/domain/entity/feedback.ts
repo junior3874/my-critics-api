@@ -2,15 +2,15 @@ import Music from "./value-objects/Music";
 import Album from "./value-objects/Album";
 import { UUID } from "./value-objects/UUID";
 import Upvote from "./upvote";
-import { IUser } from "./user";
+import { User } from "./user";
 import { Comment } from "./comment";
 import { Message } from "./value-objects/Message";
 import { InvalidMessageError } from "./errors/InvalidMessage";
 
-export namespace IFeedback {
+export namespace Feedback {
   export type Id = UUID.Value;
   export type Params = {
-    userId: IUser.Id;
+    userId: User.Id;
     message: string;
     feedbackHas: Music | Album;
   };
@@ -23,9 +23,9 @@ export namespace IFeedback {
 //   feedbackHas: Music | Album;
 // };
 
-export default class Feedback {
+export class Feedback {
   readonly id: UUID.Value;
-  readonly userId: IUser.Id;
+  readonly userId: User.Id;
   message: Message.Value;
   feedbackHas: Music | Album;
   upvotes: Upvote[];
@@ -47,7 +47,7 @@ export default class Feedback {
     this.comments = comments;
   }
 
-  static create({ message, feedbackHas, userId }: IFeedback.Params): Feedback {
+  static create({ message, feedbackHas, userId }: Feedback.Params): Feedback {
     const id = UUID.create();
     const messageOrError = Message.create(message);
     if (!(messageOrError instanceof Message)) throw messageOrError;
