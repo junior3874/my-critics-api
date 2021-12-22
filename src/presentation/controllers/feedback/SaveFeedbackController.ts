@@ -17,7 +17,7 @@ export class SaveFeedbackController implements Controller {
 
 export namespace SaveFeedbackController {
   export type Request = {
-    userId: string;
+    userId: number;
     message: string;
     musicOrAlbumId: string;
     type: "album" | "track";
