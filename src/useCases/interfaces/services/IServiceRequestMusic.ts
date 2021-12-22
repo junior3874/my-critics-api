@@ -12,5 +12,6 @@ export namespace IServiceRequestMusic {
     previewUrl: string;
     image: string;
     duration: number;
+    name: string;
   };
 }
