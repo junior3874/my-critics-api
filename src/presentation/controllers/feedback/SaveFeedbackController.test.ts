@@ -15,7 +15,7 @@ describe("#saveFeedbackController", () => {
     const mockFeedback: SaveFeedbackController.Request = {
       message: "testing messgae",
       musicOrAlbumId: "testingurl.com",
-      userId: "1",
+      userId: 1,
       type: "album",
     };
 
