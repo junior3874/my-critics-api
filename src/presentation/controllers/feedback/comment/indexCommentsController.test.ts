@@ -1,4 +1,4 @@
-import User from "@/domain/entity/user";
+import { User } from "@/domain/entity/user";
 import { HttpResponse } from "@/presentation/interfaces/HTTPResponse";
 import { ILoadCommentsInFeedbackRepositorie } from "@/useCases/interfaces/repositories";
 import { mock } from "jest-mock-extended";
