@@ -1,5 +1,5 @@
-import User from "@/domain/entity/user";
-import user from "@/domain/entity/user";
+import { User } from "@/domain/entity/user";
+
 import {
   ICheckUsernameRepositorie,
   ILoadUserByEmailRepositorie,
