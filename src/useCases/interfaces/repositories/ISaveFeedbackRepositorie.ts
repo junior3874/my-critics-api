@@ -10,6 +10,6 @@ export namespace ISaveFeedbackRepositorie {
     message: string;
     musicOrAlbumId: string;
     type: "album" | "track";
-    userId: string;
+    userId: number;
   };
 }

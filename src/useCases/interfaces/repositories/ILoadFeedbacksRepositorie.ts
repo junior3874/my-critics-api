@@ -1,5 +1,3 @@
-import Album from "@/domain/entity/value-objects/Album";
-import Music from "@/domain/entity/value-objects/Music";
 import {
   ILoadPreviewUserRepositorie,
   ILoadTotalCommentsInFeedbackRepositorie,
@@ -7,14 +5,14 @@ import {
 } from ".";
 
 export interface ILoadFeedbacksRepositorie {
-  load: (page: number) => Promise<ILoadFeedbackRepositorie.Result[]>;
+  load(page: number): Promise<ILoadFeedbacksRepositorie.Result[]>;
 }
 
-export namespace ILoadFeedbackRepositorie {
+export namespace ILoadFeedbacksRepositorie {
   export type Result = {
     id: string;
     message: string;
-    musicOrAlbum: Music | Album;
+    musicOrAlbumId: string;
     user: ILoadPreviewUserRepositorie.Result;
     comments: ILoadTotalCommentsInFeedbackRepositorie.Result;
     upvotes: ILoadTotalUpvotedInFeedbackRepositorie.Result;
