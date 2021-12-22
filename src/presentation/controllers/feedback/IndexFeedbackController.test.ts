@@ -1,6 +1,6 @@
 import { ILoadFeedbacksRepositorie } from "@/useCases/interfaces/repositories";
 
-import User from "@/domain/entity/user";
+import { User } from "@/domain/entity/user";
 import Music from "@/domain/entity/value-objects/Music";
 import { HttpResponse } from "@/presentation/interfaces/HTTPResponse";
 import { mock } from "jest-mock-extended";
@@ -32,7 +32,7 @@ describe("IndexFeedbackController", () => {
         comments: 0,
         id: "1",
         message: "testing message",
-        musicOrAlbum: {} as Music,
+        musicOrAlbumId: "1",
         upvotes: {
           positives: 0,
           negatives: 0,
