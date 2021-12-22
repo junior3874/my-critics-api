@@ -1,6 +1,5 @@
-import { prisma } from ".prisma/client";
 import PrismaAdapter from "../prisma-adapter";
-import resetDB from "./resetDb";
+import { resetDB } from "./utils";
 
 describe("#userSignUpRepositorie", () => {
   afterEach(async () => {
