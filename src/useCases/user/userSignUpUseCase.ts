@@ -3,7 +3,7 @@ import { ICheckEmailRepositorie } from "@/useCases/interfaces/repositories/IChec
 import { ICheckUsernameRepositorie } from "@/useCases/interfaces/repositories/ICheckUsernameRepositorie";
 import { IUserSignUpRepositorie } from "@/useCases/interfaces/repositories/IUserSignUpRepositorie";
 import { InvalidEmailError } from "@/domain/entity/errors/InvalidEmailError";
-import User from "@/domain/entity/user";
+import { User } from "@/domain/entity/user";
 import {
   EmailAlreadyExist,
   UsernameAlreadyExist,

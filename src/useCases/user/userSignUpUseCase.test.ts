@@ -1,7 +1,6 @@
 import { mock } from "jest-mock-extended";
 
-import User from "@/domain/entity/user";
-
+import { User } from "@/domain/entity/user";
 import { IHasher } from "@/useCases/interfaces/cryptograph";
 import { ICheckEmailRepositorie } from "@/useCases/interfaces/repositories/ICheckEmailRepositorie";
 import { ICheckUsernameRepositorie } from "@/useCases/interfaces/repositories/ICheckUsernameRepositorie";
