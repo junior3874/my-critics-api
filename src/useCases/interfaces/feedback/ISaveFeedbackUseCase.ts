@@ -8,7 +8,7 @@ export interface ISaveFeedbackUseCase {
 
 export namespace ISaveFeedbackUseCase {
   export type Params = {
-    userId: string;
+    userId: number;
     message: string;
     musicOrAlbumId: string;
     type: "album" | "track";

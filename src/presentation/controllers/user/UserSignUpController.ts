@@ -1,4 +1,4 @@
-import { IUser } from "@/domain/entity/user";
+import { User } from "@/domain/entity/user";
 import { Controller } from "@/presentation/interfaces/Controller";
 import { HttpResponse } from "@/presentation/interfaces/HTTPResponse";
 import { EmailAlreadyExist } from "@/useCases/interfaces/user/errors";
@@ -27,5 +27,5 @@ export class UserSignUpController implements Controller {
 }
 
 export namespace UserSignUpController {
-  export type Request = IUser.Params;
+  export type Request = User.Params;
 }

@@ -1,4 +1,4 @@
-import Feedback from "@/domain/entity/feedback";
+import { Feedback } from "@/domain/entity/feedback";
 import Album from "@/domain/entity/value-objects/Album";
 import Music from "@/domain/entity/value-objects/Music";
 import { ISaveFeedbackRepositorie } from "@/useCases/interfaces/repositories/ISaveFeedbackRepositorie";
@@ -16,7 +16,7 @@ export default class FeedbackCreateUseCase implements ISaveFeedbackUseCase {
     type,
   }: ISaveFeedbackUseCase.Params): Promise<void> {
     const createFeedback = this.feedback.create({
-      userId,
+      userId: userId as unknown as string,
       feedbackHas: musicOrAlbumId as unknown as Music | Album,
       message: message,
     });
