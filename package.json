@@ -1,0 +1,37 @@
+{
+  "name": "my-critics",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "development": "nodemon --watch 'src/' --exec 'ts-node src/main/index.ts' -e ts",
+    "test": "jest"
+  },
+  "prisma": {
+    "schema": "src/infra/repositories/prisma/schema.prisma"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.5.0",
+    "@types/multer": "^1.4.7",
+    "axios": "^0.24.0",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.3",
+    "spotify-web-api-node": "^5.0.2",
+    "tsconfig.json": "^1.0.10",
+    "typescript": "^4.4.4",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.0.2",
+    "@types/jsonwebtoken": "^8.5.5",
+    "jest": "^27.3.1",
+    "jest-mock-extended": "^2.0.4",
+    "nodemon": "^2.0.14",
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0"
+  }
+}
