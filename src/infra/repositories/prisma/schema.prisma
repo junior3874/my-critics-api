@@ -1,41 +1,55 @@
 datasource db {
-    url      = env("DATABASE_URL")
-    provider = "postgresql"
+  url      = env("DATABASE_URL")
+  provider = "postgresql"
 }
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 model User {
-    id              Int      @id @default(autoincrement())
-    email           String
-    username        String
-    imageProfileUrl String
-    password        String
-    name            String
-    Upvotes         Upvote[]
+  id              Int        @id @default(autoincrement())
+  email           String
+  username        String
+  imageProfileUrl String
+  password        String
+  name            String
+  Upvotes         Upvote[]
+  Feedbacks       Feedback[]
+  Comments        Comment[]
 }
 
 model Feedback {
-    id      Int      @id @default(autoincrement())
-    Upvotes Upvote[]
+  id             String    @id
+  userId         Int
+  Comments       Comment[]
+  Upvotes        Upvote[]
+  message        String
+  musicOrAlbumId String
+  type           String
+
+  userOwner User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Comment {
-    id Int @id @default(autoincrement())
+  id         String @id
+  userId     Int
+  feedbackId String
 
-    Upvotes Upvote[]
+  Upvotes Upvote[]
+
+  userOwner User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Feedback  Feedback @relation(fields: [feedbackId], references: [id], onDelete: Cascade)
 }
 
 model Upvote {
-    id         Int     @id @default(autoincrement())
-    type       Boolean
-    userId     Int
-    commentId  Int?
-    feedbackId Int?
+  id         Int     @id @default(autoincrement())
+  type       Boolean
+  userId     Int
+  commentId  String?
+  feedbackId String?
 
-    userOwner             User      @relation(fields: [userId], references: [id])
-    upvoteBelongsComment  Comment?  @relation(fields: [commentId], references: [id])
-    upvoteBelongsFeedback Feedback? @relation(fields: [feedbackId], references: [id])
+  userOwner             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  upvoteBelongsComment  Comment?  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  upvoteBelongsFeedback Feedback? @relation(fields: [feedbackId], references: [id], onDelete: Cascade)
 }

@@ -2,7 +2,9 @@ import { User } from "@/domain/entity/user";
 
 import {
   ICheckUsernameRepositorie,
+  ILoadFeedbacksRepositorie,
   ILoadUserByEmailRepositorie,
+  ISaveFeedbackRepositorie,
   IUserSignUpRepositorie,
 } from "@/useCases/interfaces/repositories";
 
@@ -13,6 +15,8 @@ const prisma = new PrismaClient();
 function PrismaAdapter() {
   const signUp: IUserSignUpRepositorie = {
     async signUp({ userImageProfileUrl, ...rest }: User): Promise<boolean> {
+      
+      prisma.
       await prisma.user.create({
         data: { ...rest, imageProfileUrl: userImageProfileUrl },
       });
@@ -34,7 +38,22 @@ function PrismaAdapter() {
     },
   };
 
-  return { signUp, loadUserByEmail };
+  const saveFeedback: ISaveFeedbackRepositorie = {
+    async save(data: ISaveFeedbackRepositorie.Params): Promise<void> {
+      await prisma.feedback.create({
+        data,
+      });
+      return;
+    },
+  };
+
+  const indexFeedbacks: ILoadFeedbacksRepositorie = {
+    async load(page: number): Promise<ILoadFeedbacksRepositorie.Result[]> {
+      return;
+    },
+  };
+
+  return { signUp, loadUserByEmail, saveFeedback };
 }
 
 export default PrismaAdapter;
