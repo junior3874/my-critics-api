@@ -1,7 +1,7 @@
 import PrismaAdapter from "../prisma-adapter";
 
 import { PrismaClient } from "@prisma/client";
-import resetDB from "./resetDb";
+import { resetDB, insertRandomUserInDB } from "./utils";
 
 const prisma = new PrismaClient();
 
@@ -25,6 +25,7 @@ describe("#loadUserByEmailRepositorie", () => {
     });
 
     const result = await loadUserByEmail.load("testing@hotmail.com");
+
     expect(result).toEqual({ id: 1, password: "testing" });
   });
 });
