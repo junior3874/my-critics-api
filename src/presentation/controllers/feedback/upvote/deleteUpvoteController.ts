@@ -2,7 +2,7 @@ import { noContent } from "@/presentation/helpers/http-helper";
 import { Controller } from "@/presentation/interfaces/Controller";
 import { HttpResponse } from "@/presentation/interfaces/HTTPResponse";
 import { IDeleteUpvoteRepositorie } from "@/useCases/interfaces/repositories/IDeleteUpvoteRepositorie";
-import { IDeleteUpvoteUseCase } from "@/useCases/interfaces/upvote/IDeleteUpvoteUseCase";
+
 
 export class DeleteUpvoteController implements Controller {
   constructor(
